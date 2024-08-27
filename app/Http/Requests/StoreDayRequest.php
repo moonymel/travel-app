@@ -24,15 +24,21 @@ class StoreDayRequest extends FormRequest
     public function rules()
     {
         return [
-            'date' => 'required',
-            'preview_image' => 'required'
+            'date' => 'required|date|unique:days,date',
+            'preview_image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048'
         ];
     }
 
     public function messages(){
         return [
-            'date.required' => 'A date must be selected!',
-            'preview_image' => 'A preview image is required!'
+            'date.required' => 'The date field is required.',
+            'date.date' => 'The date must be a valid date format.',
+            'date.unique' => 'The selected date has already been taken.',
+            
+            'preview_image.required' => 'An image is required.',
+            'preview_image.image' => 'The file must be an image.',
+            'preview_image.mimes' => 'The image must be a file of type: jpeg, png, jpg, gif.',
+            'preview_image.max' => 'The image size must not exceed 2MB.',
         ];
     }
 }

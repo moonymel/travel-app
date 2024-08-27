@@ -48,6 +48,8 @@ class DayController extends Controller
         if($request->hasFile('preview_image')) {
             $path = Storage::disk('public')->put('days_image', $form_data['preview_image']);
             $form_data['preview_image'] = $path;
+        } else {
+            $form_data['preview_image'] = null;
         }
             
         $day->fill($form_data);
