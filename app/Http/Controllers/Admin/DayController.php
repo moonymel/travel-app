@@ -17,7 +17,9 @@ class DayController extends Controller
      */
     public function index()
     {
-        //
+        $days = Day::all();
+        
+        return view('admin.days.index', compact('days'));
     }
 
     /**
@@ -27,7 +29,7 @@ class DayController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.days.create');
     }
 
     /**
@@ -49,7 +51,7 @@ class DayController extends Controller
      */
     public function show(Day $day)
     {
-        //
+        return view('admin.days.show', compact('day'));
     }
 
     /**
