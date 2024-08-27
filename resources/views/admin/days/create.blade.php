@@ -13,7 +13,7 @@
         </div>
 
         {{-- SEZIONE RECAP ERRORI --}}
-        {{-- <div class="col-12">
+        <div class="col-12">
             @if ($errors->any())
                 <div class="alert alert-danger">
                     <ul>
@@ -23,7 +23,7 @@
                     </ul>
                 </div>
             @endif
-        </div> --}}
+        </div>
         
         {{-- FORM --}}
         <div class="col-12">

@@ -40,7 +40,12 @@ class DayController extends Controller
      */
     public function store(StoreDayRequest $request)
     {
-        //
+        $form_data = $request->all();
+        $day = new Day();
+        $day->fill($form_data);
+        $day->save();
+
+        return redirect()->route('days.index', ['day' => $day]);
     }
 
     /**

@@ -13,7 +13,7 @@ class StoreDayRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,15 @@ class StoreDayRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'date' => 'required',
+            'preview_image' => 'required'
+        ];
+    }
+
+    public function messages(){
+        return [
+            'date.required' => 'A date must be selected!',
+            'preview_image' => 'A preview image is required!'
         ];
     }
 }
