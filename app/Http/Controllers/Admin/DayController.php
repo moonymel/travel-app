@@ -7,6 +7,7 @@ use App\Http\Requests\StoreDayRequest;
 use App\Http\Requests\UpdateDayRequest;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Storage;
 
 class DayController extends Controller
 {
@@ -42,6 +43,13 @@ class DayController extends Controller
     {
         $form_data = $request->all();
         $day = new Day();
+
+        // upload immagine
+        if($request->hasFile('preview_image')) {
+            $path = Storage::disk('public')->put('days_image', $form_data['preview_image']);
+            $form_data['preview_image'] = $path;
+        }
+            
         $day->fill($form_data);
         $day->save();
 
