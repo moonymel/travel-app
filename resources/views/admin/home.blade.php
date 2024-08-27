@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.admin')
 
 @section('content')
 <div class="container">
@@ -18,6 +18,9 @@
                     @endif
 
                     {{ __('You are logged in!') }}
+                    <div>
+                        LINK TO YOUR DAYS
+                    </div>
                 </div>
             </div>
         </div>
