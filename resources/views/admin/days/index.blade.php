@@ -23,7 +23,8 @@
                     <div class="card-body">
                       <h5 class="card-title">Day {{ $day->id }}</h5>
                       <p class="card-text">{{ \Carbon\Carbon::parse($day->date)->format('F j, Y') }}</p>
-                      <a href="#" class="btn btn-primary">Details</a>
+                      <a href="{{ route('admin.days.show', ['day' => $day->id]) }}" class="btn new-button btn-sm">Details</a> 
+                      <a href="{{ route('admin.days.edit', ['day' => $day->id]) }}" class="btn new-button btn-sm">Edit</a>
                     </div>
                 </div>
             </div>
