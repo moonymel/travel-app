@@ -17,12 +17,12 @@
         
         {{-- SINGOLA CARD DA CICLARE --}}
         @foreach ($days as $day)
-            <div class="col-3">
+            <div class="col-3 my-3">
                 <div class="card" style="width: 18rem;">
                     <img src="{{ asset('/storage/' . $day->preview_image) }}" class="card-img-top" alt="...">
                     <div class="card-body">
                       <h5 class="card-title">Day {{ $day->id }}</h5>
-                      <p class="card-text">{{ $day->date }}</p>
+                      <p class="card-text">{{ \Carbon\Carbon::parse($day->date)->format('F j, Y') }}</p>
                       <a href="#" class="btn btn-primary">Details</a>
                     </div>
                 </div>

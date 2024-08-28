@@ -77,7 +77,7 @@ class DayController extends Controller
      */
     public function edit(Day $day)
     {
-        //
+        return view('admin.days.edit', compact('day'));
     }
 
     /**
@@ -89,7 +89,26 @@ class DayController extends Controller
      */
     public function update(UpdateDayRequest $request, Day $day)
     {
-        //
+        $form_data = $request->all();
+
+        $exists = Day::where('date', '=', $form_data['date'])->where('id', '!=', $date->id)->get();
+        if(count($exists) > 0){
+            $error_message = 'This date is already used in another day.';
+            return redirect()->route('admin.days.edit', compact('day', 'error_message'));
+        }
+
+        if($request->hasFile('preview_image')){
+            if($project->preview_image != null){
+                Storage::disk('public')->delete($day->preview_image);
+            }
+
+            $path = Storage::disk('public')->put('days_image', $form_data['preview_image']);
+            $form_data['preview_image'] = $path;
+        }
+
+        $day->update($form_data);     
+
+        return redirect()->route('admin.days.index', ['day' => $day->id]);
     }
 
     /**
