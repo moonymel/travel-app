@@ -25,6 +25,12 @@
                       <p class="card-text">{{ \Carbon\Carbon::parse($day->date)->format('F j, Y') }}</p>
                       <a href="{{ route('admin.days.show', ['day' => $day->id]) }}" class="btn new-button btn-sm">Details</a> 
                       <a href="{{ route('admin.days.edit', ['day' => $day->id]) }}" class="btn new-button btn-sm">Edit</a>
+                      <form action="{{ route('admin.days.destroy', ['day' => $day->id]) }}" method="POST" onsubmit="return confirm('Do you really want to delete this day?')" class="d-inline">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit" class="btn new-button btn-sm">Delete</button>
+                        </form>
+                        
                     </div>
                 </div>
             </div>
