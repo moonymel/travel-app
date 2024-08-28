@@ -55,7 +55,7 @@ class DayController extends Controller
         $day->fill($form_data);
         $day->save();
 
-        return redirect()->route('days.index', ['day' => $day]);
+        return redirect()->route('admin.days.index', ['day' => $day]);
     }
 
     /**

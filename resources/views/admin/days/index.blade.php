@@ -19,10 +19,10 @@
         @foreach ($days as $day)
             <div class="col-3">
                 <div class="card" style="width: 18rem;">
-                    <img src="..." class="card-img-top" alt="...">
+                    <img src="{{ asset('/storage/' . $day->preview_image) }}" class="card-img-top" alt="...">
                     <div class="card-body">
-                      <h5 class="card-title">Day {{ $day->$id }}</h5>
-                      <p class="card-text">{{ $day->$date }}</p>
+                      <h5 class="card-title">Day {{ $day->id }}</h5>
+                      <p class="card-text">{{ $day->date }}</p>
                       <a href="#" class="btn btn-primary">Details</a>
                     </div>
                 </div>
